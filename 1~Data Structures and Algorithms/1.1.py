@@ -1,7 +1,21 @@
-"""unpacking a sequence into separate variables"""
-#examples for unpacking a N-element sequence
-data = ['AI', 93, 6.14, (2023, 2024, 2025)]
-name, mark, tt, year = data
-print(name, mark, tt, year) #AI 93 6.14 (2023, 2024, 2025)
-_, _, _, (y1, y2, y3) = data
-print(y1, y2, y3) #2023 2024 2025
+#TODO: U have an N-element tuples or sequence that u would like to unpack into a collection of N variables
+
+#example 1
+p = (1, 2, 3, 4, 5)
+#x, y, z = p, Wrong: too many var to unpack
+#x, y, z, a, b, c = p, Wrong: not enough values to unpack
+x, y, z, a, b = p #1 2 3 4 5
+print(x, y, z, a, b)
+
+x, y, *z = p #1 2 [3, 4, 5]
+print(x, y, z)
+
+_, y, z, _, a = p #2 3
+print(y, z)
+
+#example 2
+name = 'Sam'
+x, y, z = name #S a m
+print(x, y, z)
+
+

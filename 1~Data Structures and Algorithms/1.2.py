@@ -1,20 +1,34 @@
-"""unpacking element from iterables of arbitrary length"""
-#using * xpression, examples:
-record = ('Sam', 'sam@sam.com', '000-111-222', '333-444-555')
-name, emai, *phone_number = record
-print(name, emai, phone_number) #Sam sam@sam.com ['000-111-222', '333-444-555']
-
-a, *var, b = [1, 2, 3, 4, 5]
-print(a)    # 1
-print(var)  # [2, 3, 4]
-print(b)    # 5
-
 """
-| 用法位置  | 作用      | 示例                     |
-| ----- | ------- | ---------------------- |
-| 函数定义  | 接收多个参数  | `def f(*args):`        |
-| 函数调用  | 解包参数    | `f(*[1,2,3])`          |
-| 解包赋值  | 收集中间变量  | `a, *b, c = [1,2,3,4]` |
-| 构造新序列 | 展开列表、元组 | `[1, *[2, 3], 4]`      |
+Problem:
+U need to unpack N elements from an iterable, but the iterable may be longer than N elements, causing a 'too many values
+to unpack exception.
 """
+#example 1
+record = ('Dave', '1@111.com', '123-231-423','892-121-909')
+name, email, *phone_nums = record #Dave 1@111.com ['123-231-423', '892-121-909']
+print(name, email, phone_nums)
 
+name, *_, last_phone_number = record #Dave 892-121-909
+print(name, last_phone_number)
+
+#example 2
+"""
+The * syntax can be especially useful when iterating over a sequence of tuples of varying length
+"""
+records = [
+    ('foo', 1, 2),
+    ('bar', 'hi'),
+    ('foo',3, 4)
+]
+
+def do_foo(x, y):
+    print('foo', x, y)
+
+def do_bar(s):
+    print('bar', s)
+
+for tag, *args in records:
+    if tag == 'foo':
+        do_foo(*args)
+    elif tag == 'bar':
+        do_bar(*args)

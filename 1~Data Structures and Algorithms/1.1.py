@@ -1,5 +1,7 @@
-#TODO: U have an N-element tuples or sequence that u would like to unpack into a collection of N variables
-
+"""
+Problem:
+U have an N-element tuples or sequence that u would like to unpack into a collection of N variables
+"""
 #example 1
 p = (1, 2, 3, 4, 5)
 #x, y, z = p, Wrong: too many var to unpack
